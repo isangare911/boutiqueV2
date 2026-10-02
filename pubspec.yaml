@@ -1,4 +1,4 @@
-name: boutique
+name: boutique_V2
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -56,7 +56,10 @@ dependencies:
   url_launcher: ^6.3.0
   firebase_core: ^3.8.1
   firebase_auth: ^5.3.3
-  
+  # ⚡ NOUVELLES pour le thème Bogolan
+  fl_chart: ^0.68.0
+  flutter_animate: ^4.5.0
+  hugeicons: ^0.0.10
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +86,18 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icons/
+
+  # ⚡ NOUVELLES POLICES
+  fonts:
+    - family: GreatVibes
+      fonts:
+        - asset: assets/fonts/GreatVibes-Regular.ttf
+    - family: DancingScript
+      fonts:
+        - asset: assets/fonts/DancingScript-Regular.ttf
+        - asset: assets/fonts/DancingScript-Bold.ttf
+          weight: 700
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'bogolan/screens/main_navigation_bogolan_screen.dart';
 import 'core/services/auth_service.dart';
 import 'core/services/notification_cheker.dart';
 import 'core/services/notification_service.dart';
@@ -26,8 +27,6 @@ void main() async {
 
   await DatabaseHelper.instance.database;
 
-  // ⚡ Plus de données de démo — chaque boutique démarre vide
-
   await ShopSettingsService.instance.initialize();
   await NotificationService.instance.initialize();
   await AuthService.instance.initialize();
@@ -45,6 +44,8 @@ void main() async {
 class MaBoutiqueApp extends StatelessWidget {
   const MaBoutiqueApp({super.key});
 
+  static const bool testV2Directly = true;
+
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
@@ -55,17 +56,19 @@ class MaBoutiqueApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
-          themeMode: ThemeService.instance.themeMode,
-          home: const SplashScreen(),
+          themeMode: ThemeMode.light,
+          // ⚡ Scaffold GLOBAL pour le Material ancestor
+          home: Scaffold(
+            body: testV2Directly
+                ? const MainNavigationBogolanScreen() // ⚡ Avec nav
+                : const SplashScreen(),
+          ),
         );
       },
     );
   }
 }
 
-// ═══════════════════════════════════════════════════════════
-// SERVICE DE VÉRIFICATION PÉRIODIQUE
-// ═══════════════════════════════════════════════════════════
 class SubscriptionCheckerService {
   static final SubscriptionCheckerService instance =
       SubscriptionCheckerService._();

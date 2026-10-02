@@ -1,4 +1,4 @@
-import 'package:boutique/features/navigation/presentation/pages/main_navigation_screen.dart';
+import 'package:boutique_V2/features/navigation/presentation/pages/main_navigation_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/services/auth_service.dart';
